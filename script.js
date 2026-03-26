@@ -194,6 +194,12 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Initialize filter handlers
     initializeFilters();
+    
+    // Initialize accordion for contact page
+    initializeAccordions();
+    
+    // Initialize tabs for product detail page
+    initializeTabs();
 });
 
 // Load products on home and products pages
@@ -819,6 +825,45 @@ function initializeFilters() {
         if (e.target.id === 'sortSelect') {
             applyFilters();
         }
+    });
+}
+
+// Initialize accordions
+function initializeAccordions() {
+    // Bootstrap accordions are initialized automatically
+    // This function ensures they work properly on Cloudflare Pages
+    const accordionButtons = document.querySelectorAll('[data-bs-toggle="collapse"]');
+    accordionButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const target = document.querySelector(this.getAttribute('data-bs-target'));
+            if (target) {
+                target.classList.toggle('show');
+                this.classList.toggle('collapsed');
+            }
+        });
+    });
+}
+
+// Initialize tabs
+function initializeTabs() {
+    // Bootstrap tabs are initialized automatically
+    // This function ensures they work properly on Cloudflare Pages
+    const tabButtons = document.querySelectorAll('[data-bs-toggle="tab"]');
+    tabButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Remove active class from all tabs and panes
+            document.querySelectorAll('.nav-link').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.tab-pane').forEach(pane => pane.classList.remove('show', 'active'));
+            
+            // Add active class to clicked tab and corresponding pane
+            this.classList.add('active');
+            const target = document.querySelector(this.getAttribute('data-bs-target'));
+            if (target) {
+                target.classList.add('show', 'active');
+            }
+        });
     });
 }
 
