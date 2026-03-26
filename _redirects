@@ -1,0 +1,18 @@
+# Cloudflare Pages redirect file
+# Handle all routes to index.html for SPA-like behavior
+/*    /index.html   200
+
+# Specific page redirects
+/home    /index.html   200
+/shop    /products.html   200
+/product/*    /product-detail.html   200
+/cart    /cart.html   200
+/about    /about.html   200
+/contact    /contact.html   200
+/privacy    /privacy.html   200
+/shipping    /shipping.html   200
+/terms    /terms.html   200
+/returns    /returns.html   200
+
+# Handle 404
+/404    /404.html   200

@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shipping Policy - Yarn Studio LLC</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #8B4513;
+            --secondary-color: #D2691E;
+            --accent-color: #F4A460;
+            --text-dark: #333;
+            --text-light: #666;
+            --bg-light: #FFF8DC;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .navbar {
+            background-color: var(--primary-color);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+            font-size: 1.5rem;
+            color: white !important;
+        }
+
+        .nav-link {
+            color: white !important;
+            transition: color 0.3s;
+        }
+
+        .nav-link:hover {
+            color: var(--accent-color) !important;
+        }
+
+        .page-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 60px 0;
+            margin-bottom: 40px;
+        }
+
+        .policy-content {
+            background: white;
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            margin-bottom: 40px;
+        }
+
+        .policy-section {
+            margin-bottom: 30px;
+        }
+
+        .policy-section h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 10px;
+        }
+
+        .policy-section h4 {
+            color: var(--secondary-color);
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .policy-section ul {
+            padding-left: 20px;
+        }
+
+        .policy-section li {
+            margin-bottom: 8px;
+        }
+
+        .highlight-box {
+            background: var(--bg-light);
+            border-left: 4px solid var(--primary-color);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .shipping-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        .shipping-table th,
+        .shipping-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        .shipping-table th {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .shipping-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 50px 0 20px;
+            margin-top: 80px;
+        }
+
+        .footer h5 {
+            color: var(--accent-color);
+            margin-bottom: 20px;
+        }
+
+        .footer a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer a:hover {
+            color: var(--accent-color);
+        }
+
+        .cart-badge {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: #ff4444;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .search-box {
+            position: relative;
+        }
+
+        .search-results {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            max-height: 300px;
+            overflow-y: auto;
+            z-index: 1000;
+            display: none;
+        }
+
+        .search-result-item {
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .search-result-item:hover {
+            background-color: #f8f9fa;
+        }
+
+        .breadcrumb {
+            background-color: transparent;
+            padding: 0;
+        }
+
+        .breadcrumb-item + .breadcrumb-item::before {
+            content: ">";
+            color: #6c757d;
+        }
+
+        .shipping-feature {
+            text-align: center;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .shipping-feature i {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .last-updated {
+            text-align: center;
+            color: #6c757d;
+            font-style: italic;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Yarn Studio LLC</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="products.html">Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact Us</a>
+                    </li>
+                </ul>
+                <div class="d-flex align-items-center">
+                    <div class="search-box me-3">
+                        <input type="text" class="form-control" id="searchInput" placeholder="Search products...">
+                        <div class="search-results" id="searchResults"></div>
+                    </div>
+                    <a href="cart.html" class="btn btn-outline-light position-relative">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-badge" id="cartBadge">0</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html" style="color: white;">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page" style="color: white;">Shipping Policy</li>
+                </ol>
+            </nav>
+            <h1 class="display-4 fw-bold">Shipping Policy</h1>
+            <p class="lead">Fast and reliable delivery to your doorstep</p>
+        </div>
+    </section>
+
+    <!-- Shipping Policy Content -->
+    <section class="py-5">
+        <div class="container">
+            <div class="policy-content">
+                <div class="policy-section">
+                    <h2>Shipping Policy</h2>
+                    <p class="lead">Enjoy fast shipping with a 1-day preparation time and delivery in 2–3 days.</p>
+                    
+                    <div class="highlight-box">
+                        <p><strong>Yarn Studio LLC</strong> is committed to providing efficient and reliable shipping services for all our premium women's sweaters. We understand that receiving your order promptly is important, and we've designed our shipping process to ensure your items reach you safely and on time.</p>
+                    </div>
+                </div>
+
+                <!-- Shipping Features -->
+                <div class="row mb-5">
+                    <div class="col-md-3">
+                        <div class="shipping-feature">
+                            <i class="fas fa-shipping-fast"></i>
+                            <h5>Fast Processing</h5>
+                            <p>Orders processed within 1 business day</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="shipping-feature">
+                            <i class="fas fa-truck"></i>
+                            <h5>Quick Delivery</h5>
+                            <p>2-3 days standard shipping</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="shipping-feature">
+                            <i class="fas fa-globe"></i>
+                            <h5>Worldwide</h5>
+                            <p>International shipping available</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="shipping-feature">
+                            <i class="fas fa-shield-alt"></i>
+                            <h5>Secure</h5>
+                            <p>Fully insured shipments</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="policy-section">
+                    <h3>Processing Time</h3>
+                    <p>All orders are processed within 1 business day (excluding weekends and holidays). You will receive a confirmation email once your order has been processed and shipped.</p>
+                    
+                    <ul>
+                        <li><strong>Order Confirmation:</strong> Immediately after purchase</li>
+                        <li><strong>Processing:</strong> 1 business day</li>
+                        <li><strong>Shipping Notification:</strong> When your order leaves our facility</li>
+                    </ul>
+                </div>
+
+                <div class="policy-section">
+                    <h3>Shipping Rates & Delivery Times</h3>
+                    
+                    <table class="shipping-table">
+                        <thead>
+                            <tr>
+                                <th>Shipping Method</th>
+                                <th>Delivery Time</th>
+                                <th>Cost</th>
+                                <th>Tracking</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Standard Shipping</td>
+                                <td>2-3 business days</td>
+                                <td>$8.95</td>
+                                <td>Yes</td>
+                            </tr>
+                            <tr>
+                                <td>Express Shipping</td>
+                                <td>1-2 business days</td>
+                                <td>$15.95</td>
+                                <td>Yes</td>
+                            </tr>
+                            <tr>
+                                <td>Overnight Shipping</td>
+                                <td>Next business day</td>
+                                <td>$25.95</td>
+                                <td>Yes</td>
+                            </tr>
+                            <tr>
+                                <td>International</td>
+                                <td>7-14 business days</td>
+                                <td>$35.00+</td>
+                                <td>Yes</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="highlight-box">
+                        <h4>Free Shipping Offer</h4>
+                        <p>Enjoy FREE standard shipping on all orders over $100 within the continental United States!</p>
+                    </div>
+                </div>
+
+                <div class="policy-section">
+                    <h3>International Shipping</h3>
+                    <p>We ship to most countries worldwide. International shipping rates and delivery times vary by destination:</p>
+                    
+                    <ul>
+                        <li><strong>Canada:</strong> 5-7 business days - $25.00</li>
+                        <li><strong>Europe:</strong> 7-10 business days - $35.00</li>
+                        <li><strong>Asia Pacific:</strong> 10-14 business days - $40.00</li>
+                        <li><strong>Other International:</strong> 10-21 business days - $45.00</li>
+                    </ul>
+                    
+                    <p><strong>Please note:</strong> International orders may be subject to customs duties and taxes, which are the responsibility of the recipient.</p>
+                </div>
+
+                <div class="policy-section">
+                    <h3>Order Tracking</h3>
+                    <p>Once your order ships, you will receive an email with tracking information. You can track your package's journey using the provided tracking number on our website or the carrier's website.</p>
+                    
+                    <p>For real-time updates, you can:</p>
+                    <ul>
+                        <li>Check your email for tracking updates</li>
+                        <li>Visit our order tracking page</li>
+                        <li>Contact our customer service team</li>
+                    </ul>
+                </div>
+
+                <div class="policy-section">
+                    <h3>Shipping Restrictions</h3>
+                    <p>We currently do not ship to:</p>
+                    <ul>
+                        <li>PO Boxes (for express shipping)</li>
+                        <li>Military APO/FPO addresses</li>
+                        <li>Certain international destinations due to shipping restrictions</li>
+                    </ul>
+                </div>
+
+                <div class="policy-section">
+                    <h3>Package Security</h3>
+                    <p>All packages are insured against loss or damage during transit. If your package arrives damaged or doesn't arrive at all, please contact us immediately at contact@goldenyarnstudio.com so we can resolve the issue promptly.</p>
+                </div>
+
+                <div class="policy-section">
+                    <h3>Delivery Instructions</h3>
+                    <p>If you have special delivery instructions (such as leaving the package with a doorman or at a specific location), please include these in the order notes during checkout. While we'll do our best to accommodate these requests, we cannot guarantee that carriers will follow specific instructions.</p>
+                </div>
+
+                <div class="policy-section">
+                    <h3>Contact Information</h3>
+                    <div class="highlight-box">
+                        <p>For questions about our shipping policy or to inquire about your order status, please contact us:</p>
+                        <p><strong>Email:</strong> contact@goldenyarnstudio.com</p>
+                        <p><strong>Phone:</strong> (505) 555-0123</p>
+                        <p><strong>Website:</strong> www.goldenyarnstudio.com</p>
+                        <p><strong>Address:</strong> 1012 Marquez Place Ste. 106-B Santa Fe, NM 87505</p>
+                    </div>
+                </div>
+
+                <div class="last-updated">
+                    <p><em>This Shipping Policy was last updated on December 2024.</em></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>Yarn Studio LLC</h5>
+                    <p>Your trusted source for premium women's sweaters. We combine traditional craftsmanship with modern design.</p>
+                    <p><i class="fas fa-envelope"></i> contact@goldenyarnstudio.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> 1012 Marquez Place Ste. 106-B Santa Fe, NM 87505</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>INFORMATION CENTRE</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="shipping.html">Shipping Policy</a></li>
+                        <li><a href="terms.html">Terms & Conditions</a></li>
+                        <li><a href="returns.html">Returns & Refunds</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Follow Us</h5>
+                    <div class="d-flex gap-3">
+                        <a href="#" class="text-white fs-4"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-white fs-4"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white fs-4"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-white fs-4"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                    <div class="mt-3">
+                        <h6>Business Hours</h6>
+                        <p>Monday - Friday: 9 AM - 5 PM<br>
+                        Saturday - Sunday: Closed</p>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4" style="border-color: rgba(255,255,255,0.3);">
+            <div class="text-center">
+                <p>&copy; 2024 Yarn Studio LLC. All rights reserved. | www.goldenyarnstudio.com</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

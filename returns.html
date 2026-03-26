@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Returns & Refunds - Yarn Studio LLC</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #8B4513;
+            --secondary-color: #D2691E;
+            --accent-color: #F4A460;
+            --text-dark: #333;
+            --text-light: #666;
+            --bg-light: #FFF8DC;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .navbar {
+            background-color: var(--primary-color);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+            font-size: 1.5rem;
+            color: white !important;
+        }
+
+        .nav-link {
+            color: white !important;
+            transition: color 0.3s;
+        }
+
+        .nav-link:hover {
+            color: var(--accent-color) !important;
+        }
+
+        .page-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 60px 0;
+            margin-bottom: 40px;
+        }
+
+        .policy-content {
+            background: white;
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            margin-bottom: 40px;
+        }
+
+        .policy-section {
+            margin-bottom: 30px;
+        }
+
+        .policy-section h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 10px;
+        }
+
+        .policy-section h4 {
+            color: var(--secondary-color);
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .policy-section ul {
+            padding-left: 20px;
+        }
+
+        .policy-section li {
+            margin-bottom: 8px;
+        }
+
+        .highlight-box {
+            background: var(--bg-light);
+            border-left: 4px solid var(--primary-color);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .success-box {
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            border-left: 4px solid #28a745;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .warning-box {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-left: 4px solid #f39c12;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .danger-box {
+            background: #f8d7da;
+            border: 1px solid #f5c6cb;
+            border-left: 4px solid #dc3545;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 50px 0 20px;
+            margin-top: 80px;
+        }
+
+        .footer h5 {
+            color: var(--accent-color);
+            margin-bottom: 20px;
+        }
+
+        .footer a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer a:hover {
+            color: var(--accent-color);
+        }
+
+        .cart-badge {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: #ff4444;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .search-box {
+            position: relative;
+        }
+
+        .search-results {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            max-height: 300px;
+            overflow-y: auto;
+            z-index: 1000;
+            display: none;
+        }
+
+        .search-result-item {
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .search-result-item:hover {
+            background-color: #f8f9fa;
+        }
+
+        .breadcrumb {
+            background-color: transparent;
+            padding: 0;
+        }
+
+        .breadcrumb-item + .breadcrumb-item::before {
+            content: ">";
+            color: #6c757d;
+        }
+
+        .return-steps {
+            counter-reset: step-counter;
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .return-steps li {
+            position: relative;
+            padding-left: 50px;
+            margin-bottom: 20px;
+            counter-increment: step-counter;
+        }
+
+        .return-steps li::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 35px;
+            height: 35px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .last-updated {
+            text-align: center;
+            color: #6c757d;
+            font-style: italic;
+            margin-top: 30px;
+        }
+
+        .return-feature {
+            text-align: center;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .return-feature i {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Yarn Studio LLC</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="products.html">Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact Us</a>
+                    </li>
+                </ul>
+                <div class="d-flex align-items-center">
+                    <div class="search-box me-3">
+                        <input type="text" class="form-control" id="searchInput" placeholder="Search products...">
+                        <div class="search-results" id="searchResults"></div>
+                    </div>
+                    <a href="cart.html" class="btn btn-outline-light position-relative">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-badge" id="cartBadge">0</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html" style="color: white;">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page" style="color: white;">Returns & Refunds</li>
+                </ol>
+            </nav>
+            <h1 class="display-4 fw-bold">Returns & Refunds Policy</h1>
+            <p class="lead">Hassle-free returns and refunds for your peace of mind</p>
+        </div>
+    </section>
+
+    <!-- Returns & Refunds Content -->
+    <section class="py-5">
+        <div class="container">
+            <div class="policy-content">
+                <div class="policy-section">
+                    <p><strong>You are entitled to cancel your order within 30 days without giving any reason for doing so.</strong></p>
+                    
+                    <p>The deadline for canceling an order is 30 days from the date you received the goods or on which a third party you have appointed, who is not the carrier, takes possession of the product delivered.</p>
+                    
+                    <div class="success-box">
+                        <h4>Easy Returns Process</h4>
+                        <p>We want you to be completely satisfied with your purchase from Yarn Studio LLC. If for any reason you're not happy with your order, we offer a straightforward 30-day return policy.</p>
+                    </div>
+                </div>
+
+                <!-- Return Features -->
+                <div class="row mb-5">
+                    <div class="col-md-3">
+                        <div class="return-feature">
+                            <i class="fas fa-calendar-check"></i>
+                            <h5>30-Day Returns</h5>
+                            <p>Return within 30 days of delivery</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="return-feature">
+                            <i class="fas fa-undo"></i>
+                            <h5>Easy Process</h5>
+                            <p>Simple return procedure</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="return-feature">
+                            <i class="fas fa-money-bill-wave"></i>
+                            <h5>Full Refunds</h5>
+                            <p>Complete refund for eligible items</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="return-feature">
+                            <i class="fas fa-shipping-fast"></i>
+                            <h5>Quick Processing</h5>
+                            <p>Refunds processed within 30 days</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="policy-section">
+                    <h3>How to Initiate a Return</h3>
+                    <p>In order to exercise your right of cancellation, you must inform us of your decision by means of a clear statement.</p>
+                    
+                    <p>You can inform us of your decision by e-mail: <strong>contact@goldenyarnstudio.com</strong></p>
+                    
+                    <h4>Return Process Steps:</h4>
+                    <ol class="return-steps">
+                        <li>Contact our customer service team via email to initiate your return request</li>
+                        <li>Receive a return authorization number and shipping instructions</li>
+                        <li>Package the item securely in its original packaging if possible</li>
+                        <li>Ship the item to the address provided by our customer service team</li>
+                        <li>Once we receive and inspect the returned item, we'll process your refund</li>
+                    </ol>
+                </div>
+
+                <div class="policy-section">
+                    <h3>Refund Processing</h3>
+                    <p>We will reimburse you no later than 30 days from the day on which we receive the returned goods. We will use the same means of payment as you used for the order, and you will not incur any fees for such reimbursement.</p>
+                    
+                    <div class="highlight-box">
+                        <h4>Refund Timeline:</h4>
+                        <ul>
+                            <li><strong>Return Received:</strong> We'll inspect your item within 2-3 business days</li>
+                            <li><strong>Refund Initiated:</strong> Processed within 24 hours of inspection</li>
+                            <li><strong>Refund Complete:</strong> 5-10 business days to appear in your account (varies by payment method)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="policy-section">
+                    <h3>Conditions for Returns</h3>
+                    <p>In order for the goods to be eligible for a return, please make sure that:</p>
+                    
+                    <div class="success-box">
+                        <h4>Eligibility Requirements:</h4>
+                        <ul>
+                            <li>The goods were purchased in the last 30 days</li>
+                            <li>The goods are in the original packaging</li>
+                            <li>The goods are unused and in the same condition as received</li>
+                            <li>All tags and labels are attached</li>
+                            <li>No signs of wear, damage, or alteration</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="policy-section">
+                    <h3>Non-Returnable Items</h3>
+                    <div class="danger-box">
+                        <h4>The following goods cannot be returned:</h4>
+                        <ul>
+                            <li>The supply of goods made to your specifications or clearly personalized</li>
+                            <li>The supply of goods which according to their nature are not suitable to be returned, for example goods which deteriorate rapidly or where the date of expiry is over</li>
+                            <li>The supply of goods which are not suitable for return due to health protection or hygiene reasons and were unsealed after delivery</li>
+                            <li>The supply of goods which are, after delivery, according to their nature, inseparably mixed with other items</li>
+                            <li>Final sale items marked as "Non-Returnable"</li>
+                            <li>Gift cards and promotional items</li>
+                        </ul>
+                    </div>
+                    
+                    <p>We reserve the right to refuse returns of any merchandise that does not meet the above return conditions at our sole discretion.</p>
+                </div>
+
+                <div class="policy-section">
+                    <h3>Returning Goods</h3>
+                    <p>You are responsible for the cost and risk of returning the goods to us.</p>
+                    
+                    <div class="warning-box">
+                        <h4>Important Shipping Information:</h4>
+                        <p>We cannot be held responsible for goods damaged or lost in return shipment. Therefore, we recommend an insured and trackable mail service. We are unable to issue a refund without actual receipt of the goods or proof of received return delivery.</p>
+                    </div>
+                    
+                    <p>Please return items to:</p>
+                    <div class="highlight-box">
+                        <p><strong>Yarn Studio LLC</strong><br>
+                        Returns Department<br>
+                        1012 Marquez Place Ste. 106-B<br>
+                        Santa Fe, NM 87505<br>
+                        United States</p>
+                    </div>
+                </div>
+
+                <div class="policy-section">
+                    <h3>Gift Returns</h3>
+                    <p>If the goods weren't marked as a gift when purchased, or the gift giver had the order shipped to themselves to give it to you later, we will send the refund to the gift giver.</p>
+                    
+                    <p>If the goods were marked as a gift at the time of purchase and shipped directly to you, you'll receive a gift credit for the value of your return. Once the returned product is received, a gift certificate will be emailed to you.</p>
+                </div>
+
+                <div class="policy-section">
+                    <h3>Exchanges</h3>
+                    <p>If you need to exchange an item for a different size or color, please follow our return process and place a new order for the desired item. This ensures you get the item you want quickly while we process your return.</p>
+                    
+                    <p>Exchanges are subject to product availability. If the item you want is out of stock, we'll process a refund instead.</p>
+                </div>
+
+                <div class="policy-section">
+                    <h3>Damaged or Incorrect Items</h3>
+                    <p>If you receive a damaged item or the wrong item, please contact us immediately at contact@goldenyarnstudio.com. We'll arrange for a replacement or refund at no additional cost to you.</p>
+                    
+                    <p>Please include photos of the damage or the incorrect item in your email to help us resolve the issue quickly.</p>
+                </div>
+
+                <div class="policy-section">
+                    <h3>Contact Us</h3>
+                    <div class="highlight-box">
+                        <p>If you have any questions about our Returns and Refunds Policy, please contact us by e-mail:</p>
+                        <p><strong>Email:</strong> contact@goldenyarnstudio.com</p>
+                        <p><strong>Phone:</strong> (505) 555-0123</p>
+                        <p><strong>Website:</strong> www.goldenyarnstudio.com</p>
+                        <p><strong>Address:</strong> 1012 Marquez Place Ste. 106-B Santa Fe, NM 87505</p>
+                        <p><strong>Business Hours:</strong> Monday - Friday, 9 AM - 5 PM (Mountain Time)</p>
+                    </div>
+                </div>
+
+                <div class="last-updated">
+                    <p><em>This Returns & Refunds Policy was last updated on December 2024.</em></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>Yarn Studio LLC</h5>
+                    <p>Your trusted source for premium women's sweaters. We combine traditional craftsmanship with modern design.</p>
+                    <p><i class="fas fa-envelope"></i> contact@goldenyarnstudio.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> 1012 Marquez Place Ste. 106-B Santa Fe, NM 87505</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>INFORMATION CENTRE</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="shipping.html">Shipping Policy</a></li>
+                        <li><a href="terms.html">Terms & Conditions</a></li>
+                        <li><a href="returns.html">Returns & Refunds</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Follow Us</h5>
+                    <div class="d-flex gap-3">
+                        <a href="#" class="text-white fs-4"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-white fs-4"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white fs-4"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-white fs-4"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                    <div class="mt-3">
+                        <h6>Business Hours</h6>
+                        <p>Monday - Friday: 9 AM - 5 PM<br>
+                        Saturday - Sunday: Closed</p>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4" style="border-color: rgba(255,255,255,0.3);">
+            <div class="text-center">
+                <p>&copy; 2024 Yarn Studio LLC. All rights reserved. | www.goldenyarnstudio.com</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
