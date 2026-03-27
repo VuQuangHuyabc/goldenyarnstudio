@@ -532,15 +532,16 @@ function displayCart() {
     const recommendedSection = document.getElementById('recommendedSection');
     
     if (cart.length === 0) {
-        cartContainer.style.display = 'none';
-        emptyCart.style.display = 'block';
-        recommendedSection.style.display = 'none';
+        if (cartContainer) cartContainer.style.display = 'none';
+        if (emptyCart) emptyCart.style.display = 'block';
+        if (recommendedSection) recommendedSection.style.display = 'none';
     } else {
-        cartContainer.style.display = 'block';
-        emptyCart.style.display = 'none';
-        recommendedSection.style.display = 'block';
+        if (cartContainer) cartContainer.style.display = 'block';
+        if (emptyCart) emptyCart.style.display = 'none';
+        if (recommendedSection) recommendedSection.style.display = 'block';
         
-        cartContainer.innerHTML = cart.map((item, index) => `
+        if (cartContainer) {
+            cartContainer.innerHTML = cart.map((item, index) => `
             <div class="cart-item">
                 <div class="row align-items-center">
                     <div class="col-md-2">
@@ -573,6 +574,7 @@ function displayCart() {
         
         updateCartSummary();
         loadRecommendedProducts();
+        }
     }
 }
 
@@ -655,9 +657,13 @@ function loadRelatedProducts(currentProductId) {
 
 // Apply promo code
 function applyPromoCode() {
-    const promoCode = document.getElementById('promoCode').value.toUpperCase();
+    const promoCodeInput = document.getElementById('promoCode');
     const discountRow = document.getElementById('discountRow');
     const discountElement = document.getElementById('discount');
+    
+    if (!promoCodeInput || !discountRow || !discountElement) return;
+    
+    const promoCode = promoCodeInput.value.toUpperCase();
     
     if (promoCode === 'SAVE10') {
         const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
@@ -670,7 +676,8 @@ function applyPromoCode() {
         const shipping = subtotal > 100 ? 0 : 8.95;
         const tax = subtotal * 0.08;
         const total = subtotal + shipping + tax - discount;
-        document.getElementById('total').textContent = `$${total.toFixed(2)}`;
+        const totalElement = document.getElementById('total');
+        if (totalElement) totalElement.textContent = `$${total.toFixed(2)}`;
         
         showNotification('Promo code applied successfully!');
     } else if (promoCode === 'FREESHIP') {
